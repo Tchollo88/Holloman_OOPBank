@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Holloman_OOPBank
@@ -78,9 +79,9 @@ namespace Holloman_OOPBank
             if (key.Key == ConsoleKey.W)
             {
                 SubMenuIntro();
-                key = Console.ReadKey();
+                ConsoleKeyInfo subkey = Console.ReadKey();
 
-                if (key.Key != ConsoleKey.C && key.Key != ConsoleKey.R)
+                if (subkey.Key != ConsoleKey.C && subkey.Key != ConsoleKey.R)
                 {
                     Console.Clear();
                     Console.WriteLine("Sorry, but you need to enter, either (C) or (R) to continue...");
@@ -89,12 +90,12 @@ namespace Holloman_OOPBank
                     Console.ReadLine();
                     SubMenu(alpha, key, Withdrawal, Deposit, Balance);
                 }
-                if (key.Key == ConsoleKey.C)
+                if (subkey.Key == ConsoleKey.C)
                 {
                     Console.Clear();
                     MakeWithdrawal(alpha, key, Withdrawal, Withdrawal, Balance);
                 }
-                if (key.Key == ConsoleKey.R)
+                if (subkey.Key == ConsoleKey.R)
                 {
                     AccountMenu(alpha, Withdrawal, Deposit, Balance);
                 }
@@ -153,13 +154,14 @@ namespace Holloman_OOPBank
             if (Balance < 0)
             {
                 
+                
                 Balance = alpha.NegativeBalance(Balance);
                 Console.WriteLine("Your money has been withdrawn, \nYour new account balance is:");
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("-$" + Balance);
                 Console.ResetColor();
 
-                //if (Withdrawal > Balance && Balance < 0 && Withdrawal < -1000)
+                //if (Withdrawal > Balance && Balance < 0 && Balance < -1000)
                 //{
                 //    Balance = alpha.NegativeBalance(Balance);
                 //    Console.WriteLine
