@@ -161,18 +161,14 @@ namespace Holloman_OOPBank
                 Console.WriteLine("-$" + Balance);
                 Console.ResetColor();
 
-                //if (Withdrawal > Balance && Balance < 0 && Balance < -1000)
-                //{
-                //    Balance = alpha.NegativeBalance(Balance);
-                //    Console.WriteLine
-                //        ("Your account has been overdrawn passed the allowable amount, \nplease report to the nearest teller and balance your account!");
-                //    Console.WriteLine("Your account currently stands: ");
-                //    Console.ForegroundColor = ConsoleColor.Red;
-                //    Console.WriteLine("-$" + Balance);
-                //    Console.ResetColor();
-                //    FinishLog();
-                //    AccountMenu(alpha, Withdrawal, Deposit, Balance);
-                //}
+                if (Balance > 1000)
+                {
+                    Console.WriteLine
+                        ("Your account has been overdrawn passed the allowable amount, \nplease report to the nearest teller and balance your account!");
+                    FinishLog();
+                    Console.Clear();
+                    AccountMenu(alpha, Withdrawal, Deposit, Balance);
+                }
 
                 SubMenu(alpha, key, Withdrawal, Deposit, Balance); 
             }
